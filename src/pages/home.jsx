@@ -1,3 +1,4 @@
+/* eslint-disable */
 import Paginated from "../../components/Paginated";
 import { useDispatch, useSelector } from "react-redux"
 import { changePathToFilterAndSearch, deleteSearchAndFilter, filterAllProjectos, filterCategory, filterCountry, getHomeProjects, orderTop } from "../../redux/actions";
