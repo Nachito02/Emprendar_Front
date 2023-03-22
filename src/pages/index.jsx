@@ -1,3 +1,4 @@
+/* eslint-disable */
 import { useState, useEffect } from "react";
 import style from "./styles/landingExtra.module.css"
 import FormLanding from "components/formLanding/formLanding";
