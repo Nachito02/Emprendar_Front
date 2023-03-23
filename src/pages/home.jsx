@@ -14,7 +14,7 @@ import Slider from "components/slider";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowDownWideShort } from "@fortawesome/free-solid-svg-icons";
 import { faUsers, faDollarSign, faDeleteLeft } from "@fortawesome/free-solid-svg-icons";
-import { faPhone, faAddressCard, faList, faFlag } from "@fortawesome/free-solid-svg-icons";
+import { faPhone, faAddressCard, faList, faFlag , faMagnifyingGlass} from "@fortawesome/free-solid-svg-icons";
 
 
 
@@ -23,7 +23,7 @@ export default function Home() {
     const dispatch = useDispatch()
 
     const { category, country } = useSelector(state => state)
-    const [color, setColor] = useState(false)
+    
 
     useEffect(() => {
         dispatch(getHomeProjects())
@@ -34,6 +34,8 @@ export default function Home() {
     const [categoriess, setCategory] = useState('')
     const [search, setSearch] = useState('')
     const [searchs, setSearchs] = useState('')
+    const [timer, setTimer] = useState(null)
+
 
     useEffect(() => {
         let path
@@ -94,7 +96,7 @@ export default function Home() {
                                                 <input type='radio' name='radio-accordion' defaultChecked="unChecked" />
                                                 <div className={style.accordion__header}><FontAwesomeIcon icon={faDollarSign} className={style.theIcon} />
                                                 
-                                                Meta Economicas</div>
+                                                Meta Economica</div>
                                                 <div className={style.accordion__content} value={ordenss}>
                                                     <button  className={style.accordion__content_selected} onClick={(e) => setOrden(e.target.value)} value=''>-</button>
                                                     <button  className={style.accordion__content_selected} onClick={(e) => setOrden(e.target.value)} value='ASC'>menor a mayor</button>
@@ -148,10 +150,14 @@ export default function Home() {
                     </div>
                     { countriess || categoriess 
                         ?  <div className={style.mensaje_filtros}> 
-                                 Estas buscando en el país = "{countriess || "seleciona un pais" }" 
-                                proyectos de la categoria = "{categoriess || "seleciona una categoria"}" 
+
+                               <div> <FontAwesomeIcon icon={faMagnifyingGlass} /></div>
+                                { countriess ?   <div>{countriess}</div> :null}
+                                { categoriess ?   <div>{categoriess}</div> :null}
+                                {ordenss ===  "ASC" ? <div>{"m - M"}</div>: null}
+                                {ordenss ===  "DESC" ? <div>{"M - m"}</div>: null}
                             </div>
-                        : <div className={style.mensaje_filtros} > Puedes mejorar tu busqueda usando los filtros</div>
+                        :null
 
                     }
                    
@@ -162,6 +168,48 @@ export default function Home() {
     )
 
 }
+
+/*
+div className={style.mensaje_filtros}> 
+                                
+                                 Estas buscando en el país = "{countriess || "seleciona un pais" }" 
+                                proyectos de la categoria = "{categoriess || "seleciona una categoria"}" 
+                            </div>
+                        : <div className={style.mensaje_filtros} > Puedes mejorar tu busqueda usando los filtros</div>
+   <div className={style.helperButtons}>
+        <Link href="#about"><button className={style.buttonLevitation}>Acerca de nosotros</button></Link>
+        <Link href="#questions"><button className={style.buttonLevitation}>Preguntas frecuentes</button></Link>
+    </div>
+
+.helperButtons{
+    display: flex;
+    flex-direction: row;
+    width: fit-content;
+    position: fixed;
+    right: 10px;
+    bottom: 20px;
+    gap: 10px;
+    z-index: 100;
+}
+
+.buttonLevitation{
+    border: none;
+   ccccccc
+    border-radius: 8px;
+    cursor: pointer;
+    background-color: #2e034b;
+    color: aliceblue;
+    font-size: 12px;
+    font-family: 'Montserrat', sans-serif;
+    box-shadow: 0px 2px 8px black;
+}
+
+.buttonLevitation:hover{
+    background-color: #09c7ae;
+    box-shadow: 0px 2px 8px #7eddd0;
+    text-shadow: 0px 2px 8px black;
+}
+ */
 
 
 
