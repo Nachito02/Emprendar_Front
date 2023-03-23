@@ -47,9 +47,9 @@ export const CardsUsers = (user) => {
                                     <div className={style.projects}>
                                         {
                                             user.project.length !== 0
-                                                ? user.project?.map(pj => {
+                                                ? user.project?.map((pj,i) => {
                                                     return (
-                                                        <div className={style.project}>
+                                                        <div key={i} className={style.project}>
                                                             <p className={style.titleProject}>
                                                                 {pj?.title}
                                                             </p>
